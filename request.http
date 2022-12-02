@@ -1,0 +1,34 @@
+@apiLocalURL =  http://localhost:8001
+@version = v1
+@apiStagingURL = https://wallet-dev.adldigitalservice.com/api
+
+@apiUrl = {{apiLocalURL}}
+
+### Health Check
+GET {{apiUrl}}/healthz
+
+### Health Check
+GET {{apiUrl}}/metrics
+
+### Register Device
+
+POST {{apiUrl}}/{{version}}/devices
+content-type: application/json
+
+{
+    "UserId":"abc1",
+    "DeviceId":"web-205c4680-403c-4c69-ab52-ed72259b5c96",
+    "PublicKey":"0x02832380947u9823ujrufhiwbhrfwbdnjksjnf2"
+}
+
+### Update Device
+POST {{apiUrl}}/{{version}}/devices/web-205c4680-403c-4c69-ab52-ed72259b5c96/status
+content-type: application/json
+
+{
+    "deviceId": "web-205c4680-403c-4c69-ab52-ed72259b5c96"
+}
+
+### Auth
+GET {{apiUrl}}/{{version}}/devices/auth?user_id=12ij3i23
+content-type: application/json
